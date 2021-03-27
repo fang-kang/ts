@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>对象的类型——接口 | Ts学习笔记</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/ts/images/logo.jpg">
+    <link rel="manifest" href="/ts/images/logo.jpg">
+    <link rel="apple-touch-icon" href="/ts/images/logo.jpg">
+    <meta name="description" content="TypeScript学习手册">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/ts/assets/css/0.styles.e5056de2.css" as="style"><link rel="preload" href="/ts/assets/js/app.7bbdac73.js" as="script"><link rel="preload" href="/ts/assets/js/2.4ab4884d.js" as="script"><link rel="preload" href="/ts/assets/js/25.4fa8ea24.js" as="script"><link rel="prefetch" href="/ts/assets/js/10.32e9b08c.js"><link rel="prefetch" href="/ts/assets/js/11.962a091c.js"><link rel="prefetch" href="/ts/assets/js/12.8e7dfb26.js"><link rel="prefetch" href="/ts/assets/js/13.419acf1a.js"><link rel="prefetch" href="/ts/assets/js/14.9ba9b381.js"><link rel="prefetch" href="/ts/assets/js/15.9a08adac.js"><link rel="prefetch" href="/ts/assets/js/16.7a3e7d71.js"><link rel="prefetch" href="/ts/assets/js/17.10ce1d04.js"><link rel="prefetch" href="/ts/assets/js/18.893ed05e.js"><link rel="prefetch" href="/ts/assets/js/19.537933e1.js"><link rel="prefetch" href="/ts/assets/js/20.8eba8db5.js"><link rel="prefetch" href="/ts/assets/js/21.399fdd4c.js"><link rel="prefetch" href="/ts/assets/js/22.fc186233.js"><link rel="prefetch" href="/ts/assets/js/23.623070ea.js"><link rel="prefetch" href="/ts/assets/js/24.66aae6f2.js"><link rel="prefetch" href="/ts/assets/js/26.8a8f7002.js"><link rel="prefetch" href="/ts/assets/js/27.314411b7.js"><link rel="prefetch" href="/ts/assets/js/28.00e06d97.js"><link rel="prefetch" href="/ts/assets/js/29.b3649cec.js"><link rel="prefetch" href="/ts/assets/js/3.a1d2f9b8.js"><link rel="prefetch" href="/ts/assets/js/4.f33bed16.js"><link rel="prefetch" href="/ts/assets/js/5.9ee04f81.js"><link rel="prefetch" href="/ts/assets/js/6.9d473758.js"><link rel="prefetch" href="/ts/assets/js/7.ac732be0.js"><link rel="prefetch" href="/ts/assets/js/8.607229ba.js"><link rel="prefetch" href="/ts/assets/js/9.6e08fab4.js">
+    <link rel="stylesheet" href="/ts/assets/css/0.styles.e5056de2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/ts/" class="home-link router-link-active"><img src="/ts/images/logo.jpg" alt="Ts学习笔记" class="logo"> <span class="site-name can-hide">Ts学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://fang-kang.gitee.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Blog
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="学习手册" class="dropdown-title"><span class="title">学习手册</span> <span class="arrow down"></span></button> <button type="button" aria-label="学习手册" class="mobile-dropdown-title"><span class="title">学习手册</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://fang-kang.gitee.io/vue3.0" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue3.0
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://fang-kang.gitee.io/es6" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Es6
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://fang-kang.gitee.io/node" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Node
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com/fang-kang" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://gitee.com/fang-kang" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://fang-kang.gitee.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Blog
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="学习手册" class="dropdown-title"><span class="title">学习手册</span> <span class="arrow down"></span></button> <button type="button" aria-label="学习手册" class="mobile-dropdown-title"><span class="title">学习手册</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://fang-kang.gitee.io/vue3.0" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue3.0
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://fang-kang.gitee.io/es6" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Es6
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://fang-kang.gitee.io/node" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Node
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com/fang-kang" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://gitee.com/fang-kang" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>简介</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/ts/guide/what/what-is-typescript.html" class="sidebar-link">什么是 TypeScript</a></li><li><a href="/ts/guide/what/get-typescript.html" class="sidebar-link">安装 TypeScript</a></li><li><a href="/ts/guide/what/hello-typescript.html" class="sidebar-link">Hello TypeScript</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>基础</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/ts/guide/basics/primitive-data-types.html" class="sidebar-link">原始数据类型</a></li><li><a href="/ts/guide/basics/any.html" class="sidebar-link">任意值</a></li><li><a href="/ts/guide/basics/type-inference.html" class="sidebar-link">类型推论</a></li><li><a href="/ts/guide/basics/union-types.html" class="sidebar-link">联合类型</a></li><li><a href="/ts/guide/basics/type-of-object-interfaces.html" aria-current="page" class="active sidebar-link">对象的类型——接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/ts/guide/basics/type-of-object-interfaces.html#什么是接口" class="sidebar-link">什么是接口</a></li><li class="sidebar-sub-header"><a href="/ts/guide/basics/type-of-object-interfaces.html#简单的例子" class="sidebar-link">简单的例子</a></li><li class="sidebar-sub-header"><a href="/ts/guide/basics/type-of-object-interfaces.html#可选属性" class="sidebar-link">可选属性</a></li><li class="sidebar-sub-header"><a href="/ts/guide/basics/type-of-object-interfaces.html#任意属性" class="sidebar-link">任意属性</a></li><li class="sidebar-sub-header"><a href="/ts/guide/basics/type-of-object-interfaces.html#只读属性" class="sidebar-link">只读属性</a></li><li class="sidebar-sub-header"><a href="/ts/guide/basics/type-of-object-interfaces.html#参考" class="sidebar-link">参考</a></li></ul></li><li><a href="/ts/guide/basics/type-of-array.html" class="sidebar-link">数组的类型</a></li><li><a href="/ts/guide/basics/type-of-function.html" class="sidebar-link">函数的类型</a></li><li><a href="/ts/guide/basics/type-assertion.html" class="sidebar-link">类型断言</a></li><li><a href="/ts/guide/basics/declaration-files.html" class="sidebar-link">声明文件</a></li><li><a href="/ts/guide/basics/built-in-objects.html" class="sidebar-link">内置对象</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/ts/guide/advanced/type-aliases.html" class="sidebar-link">类型别名</a></li><li><a href="/ts/guide/advanced/string-literal-types.html" class="sidebar-link">字符串字面量类型</a></li><li><a href="/ts/guide/advanced/tuple.html" class="sidebar-link">元组</a></li><li><a href="/ts/guide/advanced/enum.html" class="sidebar-link">枚举</a></li><li><a href="/ts/guide/advanced/class.html" class="sidebar-link">类</a></li><li><a href="/ts/guide/advanced/class-and-interfaces.html" class="sidebar-link">类与接口</a></li><li><a href="/ts/guide/advanced/generics.html" class="sidebar-link">泛型</a></li><li><a href="/ts/guide/advanced/declaration-merging.html" class="sidebar-link">声明合并</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="对象的类型-接口"><a href="#对象的类型-接口" class="header-anchor">#</a> 对象的类型——接口</h1> <p>在 TypeScript 中，我们使用接口（Interfaces）来定义对象的类型。</p> <h2 id="什么是接口"><a href="#什么是接口" class="header-anchor">#</a> 什么是接口</h2> <p>在面向对象语言中，接口（Interfaces）是一个很重要的概念，它是对行为的抽象，而具体如何行动需要由类（classes）去实现（implement）。</p> <p>TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。</p> <h2 id="简单的例子"><a href="#简单的例子" class="header-anchor">#</a> 简单的例子</h2> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token number">25</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>上面的例子中，我们定义了一个接口 <code>Person</code>，接着定义了一个变量 <code>tom</code>，它的类型是 <code>Person</code>。这样，我们就约束了 <code>tom</code> 的形状必须和接口 <code>Person</code> 一致。</p> <p>接口一般首字母大写。有的编程语言中会建议接口的名称加上 <code>I</code> 前缀。</p> <p>定义的变量比接口少了一些属性是不允许的：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// index.ts(6,5): error TS2322: Type '{ name: string; }' is not assignable to type 'Person'.</span>
+<span class="token comment">//   Property 'age' is missing in type '{ name: string; }'.</span>
+</code></pre></div><p>多一些属性也是不允许的：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+    gender<span class="token operator">:</span> <span class="token string">'male'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// index.ts(9,5): error TS2322: Type '{ name: string; age: number; gender: string; }' is not assignable to type 'Person'.</span>
+<span class="token comment">//   Object literal may only specify known properties, and 'gender' does not exist in type 'Person'.</span>
+</code></pre></div><p>可见，<strong>赋值的时候，变量的形状必须和接口的形状保持一致</strong>。</p> <h2 id="可选属性"><a href="#可选属性" class="header-anchor">#</a> 可选属性</h2> <p>有时我们希望不要完全匹配一个形状，那么可以用可选属性：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token number">25</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>可选属性的含义是该属性可以不存在。</p> <p>这时<strong>仍然不允许添加未定义的属性</strong>：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+    gender<span class="token operator">:</span> <span class="token string">'male'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// examples/playground/index.ts(9,5): error TS2322: Type '{ name: string; age: number; gender: string; }' is not assignable to type 'Person'.</span>
+<span class="token comment">//   Object literal may only specify known properties, and 'gender' does not exist in type 'Person'.</span>
+</code></pre></div><h2 id="任意属性"><a href="#任意属性" class="header-anchor">#</a> 任意属性</h2> <p>有时候我们希望一个接口允许有任意的属性，可以使用如下方式：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
+    gender<span class="token operator">:</span> <span class="token string">'male'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>使用 <code>[propName: string]</code> 定义了任意属性取 <code>string</code> 类型的值。</p> <p>需要注意的是，一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+    gender<span class="token operator">:</span> <span class="token string">'male'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// index.ts(3,5): error TS2411: Property 'age' of type 'number' is not assignable to string index type 'string'.</span>
+<span class="token comment">// index.ts(7,5): error TS2322: Type '{ [x: string]: string | number; name: string; age: number; gender: string; }' is not assignable to type 'Person'.</span>
+<span class="token comment">//   Index signatures are incompatible.</span>
+<span class="token comment">//     Type 'string | number' is not assignable to type 'string'.</span>
+<span class="token comment">//       Type 'number' is not assignable to type 'string'.</span>
+</code></pre></div><p>上例中，任意属性的值允许是 <code>string</code>，但是可选属性 <code>age</code> 的值却是 <code>number</code>，<code>number</code> 不是 <code>string</code> 的子属性，所以报错了。</p> <p>另外，在报错信息中可以看出，此时 <code>{ name: 'Tom', age: 25, gender: 'male' }</code> 的类型被推断成了 <code>{ [x: string]: string | number; name: string; age: number; gender: string; }</code>，这是联合类型和接口的结合。</p> <p>一个接口中只能定义一个任意属性。如果接口中有多个类型的属性，则可以在任意属性中使用联合类型：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+    gender<span class="token operator">:</span> <span class="token string">'male'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="只读属性"><a href="#只读属性" class="header-anchor">#</a> 只读属性</h2> <p>有时候我们希望对象中的一些字段只能在创建的时候被赋值，那么可以用 <code>readonly</code> 定义只读属性:</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    <span class="token keyword">readonly</span> id<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token number">89757</span><span class="token punctuation">,</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
+    gender<span class="token operator">:</span> <span class="token string">'male'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+tom<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token number">9527</span><span class="token punctuation">;</span>
+
+<span class="token comment">// index.ts(14,5): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.</span>
+</code></pre></div><p>上例中，使用 readonly 定义的属性 id 初始化后，又被赋值了，所以报错了。</p> <p><strong>注意，只读的约束存在于第一次给对象赋值的时候，而不是第一次给只读属性赋值的时候</strong>：</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    <span class="token keyword">readonly</span> id<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>propName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> tom<span class="token operator">:</span> Person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span>
+    gender<span class="token operator">:</span> <span class="token string">'male'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+tom<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token number">89757</span><span class="token punctuation">;</span>
+
+<span class="token comment">// index.ts(8,5): error TS2322: Type '{ name: string; gender: string; }' is not assignable to type 'Person'.</span>
+<span class="token comment">//   Property 'id' is missing in type '{ name: string; gender: string; }'.</span>
+<span class="token comment">// index.ts(13,5): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.</span>
+</code></pre></div><p>上例中，报错信息有两处，第一处是在对 <code>tom</code> 进行赋值的时候，没有给 <code>id</code> 赋值。</p> <p>第二处是在给 <code>tom.id</code> 赋值的时候，由于它是只读属性，所以报错了。</p> <h2 id="参考"><a href="#参考" class="header-anchor">#</a> 参考</h2> <ul><li><a href="https://www.typescriptlang.org/docs/handbook/interfaces.html" target="_blank" rel="noopener noreferrer">Interfaces<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Interfaces.html" target="_blank" rel="noopener noreferrer">（中文版）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/ts/guide/basics/union-types.html" class="prev">
+        联合类型
+      </a></span> <span class="next"><a href="/ts/guide/basics/type-of-array.html">
+        数组的类型
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/ts/assets/js/app.7bbdac73.js" defer></script><script src="/ts/assets/js/2.4ab4884d.js" defer></script><script src="/ts/assets/js/25.4fa8ea24.js" defer></script>
+  </body>
+</html>
